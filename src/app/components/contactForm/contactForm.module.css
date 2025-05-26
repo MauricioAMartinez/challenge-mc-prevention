@@ -1,0 +1,39 @@
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  width: 100%;
+  max-width: 700px;
+  margin-top: 2rem;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buttons a,
+.buttons button {
+  flex: 1 1 45%;
+  min-width: 120px;
+}
+
+
+@media (max-width: 600px) {
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .buttons a,
+  .buttons button {
+    width: 100%;
+  }
+}

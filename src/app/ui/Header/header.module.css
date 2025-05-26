@@ -1,0 +1,11 @@
+.container {
+  background-color: #ffe600;
+  padding: 20px;
+}
+.logo {
+  font-size: 2rem;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
+}

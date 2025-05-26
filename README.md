@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ Challenge MC Prevention
 
-## Getting Started
+Este proyecto simula un paso de verificación de datos dentro de un flujo de checkout, enfocado en **prevención de fraude**. El objetivo principal es garantizar **performance**, **accesibilidad**, **compatibilidad sin JavaScript** y **soporte internacionalizado**.
 
-First, run the development server:
+---
 
-```bash
+## 📁 Estructura del proyecto
+
+src/
+├── app/
+│ ├── previous-step/ # Página del formulario (flujo principal)
+│ ├── confirmation/ # Página final de confirmación
+│ ├── api/ # APIs internas simuladas
+│ ├── components/ # Componentes del formulario
+│ ├── hooks/ # Hooks personalizados
+│ ├── services/ # Lógica de fetch para APIs
+│ ├── ui/ # Elementos UI reutilizables
+│ ├── page.tsx # Página principal de bienvenida
+│ ├── layout.tsx # Layout global
+│ ├── i18n.ts # Archivo de traducciones
+│ └── middleware.ts # Detección de idioma por dominio
+
+2. Instalar dependencias
+   npm install
+
+3. Configurar variables de entorno
+   Crea un archivo .env
+
+4. Ejecutar el servidor de Next.js
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Ejecutar servidor Express (en otro terminal)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+node server.js
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌐 Rutas principales
+Ruta Descripción
+/ Página de bienvenida
+/previous-step Formulario principal (SSR)
+/confirmation Confirmación final
+http://localhost:3001/external Redirección desde servidor Express
 
-## Learn More
+🧩 Características técnicas
+✅ SSR con soporte para fallback sin JavaScript
 
-To learn more about Next.js, take a look at the following resources:
+🌐 Soporte multi-idioma (es, pt, en) por dominio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔐 Validación robusta en backend y frontend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🧠 Persistencia del formulario en localStorage
 
-## Deploy on Vercel
+🧪 CAPTCHA reCAPTCHA v3 con fallback <noscript>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+⚙️ API interna simulada (meli-users y meli-countries)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+🔁 Flujo del servidor Express
+
+GET /external
+→ redirige a: /previous-step?referrer=/previous-step&token=123
+
+
+| Endpoint           | Descripción                        |
+| ------------------ | ---------------------------------- |
+| `/api/user-data`   | Retorna datos simulados de usuario |
+| `/api/countries`   | Lista de países simulados          |
+| `/api/submit-step` | Valida y guarda el formulario      |
