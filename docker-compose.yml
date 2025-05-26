@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nextapp:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_RECAPTCHA_SITE_KEY=TU_SITE_KEY
+      - RECAPTCHA_SECRET_KEY=TU_SECRET_KEY
+      - API_BASE_URL=https://fakeapi.com
+    depends_on:
+      - express
+
+  express:
+    build:
+      context: .
+      dockerfile: Dockerfile.express
+    ports:
+      - "3001:3001"
