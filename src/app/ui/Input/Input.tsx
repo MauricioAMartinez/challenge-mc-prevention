@@ -12,7 +12,7 @@ interface InputProps {
 export default function Input({ label, id, register, error, ...rest }: InputProps) {
   return (
     <div className={Styles.inputWrapper}>
-      {/* <label htmlFor={id}>{label}</label> */}
+      <label style={{ display: 'none' }} htmlFor={id}>{label}</label>
       <input className={Styles.input} id={id} {...register} {...rest} />
       {error && <p className={Styles.errorMessage}>{error}</p>}
     </div>

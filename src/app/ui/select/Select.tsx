@@ -14,7 +14,7 @@ interface SelectProps {
 export default function Select({ label, id, options, register, error, ...rest }: SelectProps) {
   return (
     <div className={Styles.selectWrapper}>
-      {/* <label htmlFor={id}>{label}</label> */}
+      <label style={{ display: 'none' }} htmlFor={id}>{label}</label>
       <select className={Styles.select} id={id} {...register} {...rest}>
         <option value="">Select...</option>
         {options.map((opt) => (

@@ -5,12 +5,6 @@ import styles from './previous-step.module.css';
 import { cookies } from 'next/headers';
 import { translations } from '@/app/i18n';
 
-interface PageProps {
-  searchParams?: {
-    referrer?: string;
-    token?: string;
-  };
-}
 
 export default async function Page({ searchParams }: { searchParams: { referrer?: string; token?: string } }) {
   const referrer = searchParams.referrer || '/';
